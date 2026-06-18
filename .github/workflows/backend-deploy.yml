@@ -1,0 +1,42 @@
+name: Backend Deploy Pipeline
+
+on:
+  workflow_call:
+    inputs:
+      ocptoken: { type: string, required: true }
+      environment: { type: string, required: true }
+      projectName: { type: string, required: true }
+      prodFlag: { type: string, required: false }
+      selectpackage: { type: string, required: true }
+      selectall: { type: string, required: true }
+      branchName: { type: string, required: false }
+      backupFlag: { type: string, required: false }
+      runner: { type: string, required: true }
+
+jobs:
+  validate:
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Validate Inputs
+        run: |
+          echo "=== BACKEND DEPLOY ==="
+          echo "environment: ${{ inputs.environment }}"
+          echo "projectName: ${{ inputs.projectName }}"
+          echo "selectpackage: ${{ inputs.selectpackage }}"
+
+  deploy:
+    needs: validate
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Deploy Backend
+        run: |
+          echo "Simulating deployment..."
+          echo "Patch imagestream"
+          echo "Restart pods"
+
+  restart:
+    needs: deploy
+    runs-on: ${{ inputs.runner }}
+    steps:
+      - name: Restart App
+        run: echo "Restarting backend pods"
