@@ -1,0 +1,17 @@
+name: Backend Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+      environment:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy backend
+        run: |
+          echo "Deploying backend ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }}"
