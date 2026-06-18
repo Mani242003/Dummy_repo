@@ -1,68 +1,39 @@
-name: CMO Frontend Build Pipeline
+name: Frontend Build Pipeline
 
 on:
   workflow_call:
     inputs:
-      relordev:
-        required: true
-        type: string
-
-      relno:
-        required: true
-        type: string
-
-      branchName:
-        required: true
-        type: string
-
-      buildimage:
-        required: true
-        type: string
-
-      uploadimage:
-        required: true
-        type: string
-
-      environment:
-        required: true
-        type: string
+      relordev: { type: string, required: true }
+      relno: { type: string, required: true }
+      branchName: { type: string, required: true }
+      buildimage: { type: string, required: true }
+      uploadimage: { type: string, required: true }
+      environment: { type: string, required: true }
 
 jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Validate Input
-        run: |
-          echo "===== FRONTEND BUILD INPUT ====="
-          echo "relordev: ${{ inputs.relordev }}"
-          echo "relno: ${{ inputs.relno }}"
-          echo "branchName: ${{ inputs.branchName }}"
-          echo "buildimage: ${{ inputs.buildimage }}"
-          echo "uploadimage: ${{ inputs.uploadimage }}"
-          echo "environment: ${{ inputs.environment }}"
+      - run: |
+          echo "=== FRONTEND BUILD ==="
+          echo "${{ inputs.relordev }}"
+          echo "${{ inputs.relno }}"
+          echo "${{ inputs.branchName }}"
 
   build:
     needs: validate
     runs-on: ubuntu-latest
     steps:
-      - name: Build Frontend
-        run: |
-          echo "Building frontend app..."
-          echo "Simulating npm build..."
+      - run: echo "Building frontend..."
 
   docker:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Build Docker Image
-        run: |
-          echo "Building Docker Image for frontend"
+      - run: echo "Docker build..."
 
   cleanup:
     needs: docker
     runs-on: ubuntu-latest
     steps:
-      - name: Cleanup
-        run: |
-          echo "Cleaning up frontend build files"
-``
+      - run: echo "Cleanup done"
