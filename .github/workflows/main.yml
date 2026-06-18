@@ -1,0 +1,17 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+      environment:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print inputs
+        run: |
+          echo "Deploying ${{ github.event.inputs.version }} to ${{ github.event.inputs.environment }}"
