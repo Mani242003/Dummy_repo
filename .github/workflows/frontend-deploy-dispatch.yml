@@ -1,4 +1,4 @@
-name: CMO Frontend Deploy (Dispatch)
+name: frontend-deploy-dispatch
 
 on:
   workflow_dispatch:
