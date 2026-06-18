@@ -1,0 +1,45 @@
+name: CMO Mobile Frontend - Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      relordev:
+        description: 'Release or Development'
+        required: true
+        default: Development
+
+      relno:
+        description: 'Release Number (Ex: 26.43)'
+        required: true
+        default: "26.43"
+
+      branchName:
+        description: 'Branch Name'
+        required: true
+        default: develop
+
+      buildimage:
+        description: 'Build Image'
+        required: true
+        default: Y
+
+      uploadimage:
+        description: 'Upload Image'
+        required: true
+        default: Y
+
+      environment:
+        description: 'Environment'
+        required: true
+        default: sit1
+
+jobs:
+  call:
+    uses: ./.github/workflows/frontend-build.yml
+    with:
+      relordev: ${{ inputs.relordev }}
+      relno: ${{ inputs.relno }}
+      branchName: ${{ inputs.branchName }}
+      buildimage: ${{ inputs.buildimage }}
+      uploadimage: ${{ inputs.uploadimage }}
+      environment: ${{ inputs.environment }}
