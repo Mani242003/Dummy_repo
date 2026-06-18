@@ -1,4 +1,4 @@
-name: frontend-deploy-dispatch
+name: frontend-deploy
 
 on:
   workflow_call:
