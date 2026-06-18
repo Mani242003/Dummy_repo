@@ -1,0 +1,15 @@
+name: Backend Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        required: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build backend
+        run: |
+          echo "Building backend version ${{ github.event.inputs.version }}"
