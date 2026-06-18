@@ -1,29 +1,20 @@
-name: CMO Mobile Frontend - Deploy
+name: CMO Frontend Deploy (Dispatch)
 
 on:
   workflow_dispatch:
     inputs:
       ocptoken:
-        description: 'OCP Token'
         required: true
-
       environment:
-        description: 'Environment'
         required: true
         default: sit1
-
       projectName:
-        description: 'Project Name'
         required: true
         default: cmomobile-sit01
-
       selectpackage:
-        description: 'Select Package'
         required: true
         default: ALL
-
       selectall:
-        description: 'Type ALL'
         required: true
         default: ALL
 
