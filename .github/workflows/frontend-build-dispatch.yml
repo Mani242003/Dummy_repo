@@ -1,4 +1,4 @@
-name: CMO Frontend Build (Dispatch)
+name: frontend-build-dispatch
 
 on:
   workflow_dispatch:
