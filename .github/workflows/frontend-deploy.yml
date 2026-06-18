@@ -1,0 +1,55 @@
+name: CMO Frontend Deploy Pipeline
+
+on:
+  workflow_call:
+    inputs:
+      ocptoken:
+        required: true
+        type: string
+
+      environment:
+        required: true
+        type: string
+
+      projectName:
+        required: true
+        type: string
+
+      selectpackage:
+        required: true
+        type: string
+
+      selectall:
+        required: true
+        type: string
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Deploy Inputs
+        run: |
+          echo "===== FRONTEND DEPLOY INPUT ====="
+          echo "ocptoken: ${{ inputs.ocptoken }}"
+          echo "environment: ${{ inputs.environment }}"
+          echo "projectName: ${{ inputs.projectName }}"
+          echo "selectpackage: ${{ inputs.selectpackage }}"
+          echo "selectall: ${{ inputs.selectall }}"
+
+  deploy:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Frontend
+        run: |
+          echo "Deploying to OpenShift (simulation)"
+          echo "Applying deployment YAML..."
+
+  restart:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restart Service
+        run: |
+          echo "Restarting frontend pods"
+``
