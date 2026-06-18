@@ -1,4 +1,4 @@
-name: Frontend Deploy Pipeline
+name: frontend-deploy-dispatch
 
 on:
   workflow_call:
