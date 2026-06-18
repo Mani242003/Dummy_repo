@@ -1,0 +1,60 @@
+name: CMO Backend Deploy (Dispatch)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ocptoken:
+        description: 'Token for ARO'
+        required: true
+
+      environment:
+        description: 'Environment'
+        required: true
+        default: sit1
+
+      projectName:
+        description: 'Project Name'
+        required: true
+        default: cmomobile-sit01
+
+      prodFlag:
+        description: 'Prod Flag'
+        required: false
+
+      selectpackage:
+        description: 'Select Package'
+        required: true
+        default: ALL
+
+      selectall:
+        description: 'Type ALL'
+        required: true
+        default: ALL
+
+      branchName:
+        description: 'Branch Name (optional)'
+        required: false
+
+      backupFlag:
+        description: 'Backup Flag'
+        required: false
+        default: N
+
+      runner:
+        description: 'Runner'
+        required: true
+        default: enterprise
+
+jobs:
+  call:
+    uses: ./.github/workflows/backend-deploy.yml
+    with:
+      ocptoken: ${{ inputs.ocptoken }}
+      environment: ${{ inputs.environment }}
+      projectName: ${{ inputs.projectName }}
+      prodFlag: ${{ inputs.prodFlag }}
+      selectpackage: ${{ inputs.selectpackage }}
+      selectall: ${{ inputs.selectall }}
+      branchName: ${{ inputs.branchName }}
+      backupFlag: ${{ inputs.backupFlag }}
+      runner: ${{ inputs.runner }}
