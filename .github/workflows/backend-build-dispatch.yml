@@ -36,7 +36,7 @@ on:
       runner:
         description: 'Runner'
         required: true
-        default: enterprise
+        default: ubuntu-latest
 
 jobs:
   call:
