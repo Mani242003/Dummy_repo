@@ -6,40 +6,75 @@ on:
       relordev:
         description: 'Release or Development'
         required: true
+        type: choice
+        options:
+          - Development
+          - Release
         default: Development
 
       relno:
         description: 'Release No'
         required: true
         default: "26.43"
+
       updatedChecker:
         description: 'Environment'
         required: true
+        type: choice
+        options:
+          - sit1
+          - sit2
+          - uat
+          - prod
         default: sit1
 
       branchName:
         description: 'Branch Name'
         required: true
+        type: choice
+        options:
+          - develop
+          - main
+          - feat2
         default: develop
 
       buildimage:
         description: 'Build Image'
         required: true
+        type: choice
+        options:
+          - Y
+          - N
         default: Y
 
       uploadimage:
         description: 'Upload Image'
         required: true
+        type: choice
+        options:
+          - Y
+          - N
         default: Y
 
       environment:
         description: 'Environment'
         required: true
+        type: choice
+        options:
+          - sit1
+          - sit2
+          - uat
+          - prod
         default: sit1
 
       runner:
         description: 'Runner'
         required: true
+        type: choice
+        options:
+          - ubuntu-latest
+          - ubuntu-22.04
+          - ubuntu-20.04
         default: ubuntu-latest
 
 jobs:
