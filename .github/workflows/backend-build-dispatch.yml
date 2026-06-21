@@ -12,6 +12,10 @@ on:
         description: 'Release No'
         required: true
         default: "26.43"
+      updatedChecker:
+        description: 'Environment'
+        required: true
+        default: sit1
 
       branchName:
         description: 'Branch Name'
